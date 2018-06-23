@@ -12,13 +12,14 @@ public class Cursor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (cameraRaycaster.gameObject.layer == (int)Layer.Enemy)
-            {
-                print("Clicked on an Enemy");
-            }
-        }
+
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    if (cameraRaycaster.gameObject.tag == "EnvironmentBlock")
+        //    {
+        //        print("Clicked on an Enemy");
+        //    }
+        //}
         print(cameraRaycaster.layerHit);
-	}
+    }
 }
