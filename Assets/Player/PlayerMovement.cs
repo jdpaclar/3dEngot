@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
         currentClickTarget = transform.position;
     }
 
+    // TODO fix issue click movement with WASD conflict and increasing speed
+
     // Fixed update is called in sync with physics
     private void FixedUpdate()
     {
