@@ -15,11 +15,8 @@ public class Cursor : MonoBehaviour {
 
         //if (Input.GetMouseButtonDown(0))
         //{
-        //    if (cameraRaycaster.gameObject.tag == "EnvironmentBlock")
-        //    {
-        //        print("Clicked on an Enemy");
-        //    }
+        //    print(cameraRaycaster.hit.collider.gameObject.tag.ToString());
         //}
-        print(cameraRaycaster.layerHit);
+        //print(cameraRaycaster.layerHit);
     }
 }
