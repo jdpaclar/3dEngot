@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     CameraRaycaster cameraRaycaster;
     Vector3 currentClickTarget;
 
+    bool isInDirectMode = false;  // TODO consider making serailize field later
+
     private void Start()
     {
         cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
@@ -18,10 +20,7 @@ public class PlayerMovement : MonoBehaviour
         currentClickTarget = transform.position;
     }
 
-    // TODO fix issue click movement with WASD conflict and increasing speed
-
-    // Fixed update is called in sync with physics
-    private void FixedUpdate()
+    private void ProcessMouseMovement()
     {
         if (Input.GetMouseButton(0))
         {
@@ -48,6 +47,35 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             m_Character.Move(Vector3.zero, false, false);
+        }
+    }
+
+    private void ProcessDirectMode()
+    {
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
+
+        Vector3 m_CamForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
+        Vector3 m_Move = v * m_CamForward + h * Camera.main.transform.right;
+
+        m_Character.Move(m_Move, false, false);
+    }
+
+    // Fixed update is called in sync with physics
+    private void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.G)) // TODO can be placed into game menu and map to specific controller
+        {
+            isInDirectMode = !isInDirectMode;
+        }
+
+        if (isInDirectMode)
+        {
+            ProcessDirectMode();
+        }
+        else
+        { 
+            ProcessMouseMovement();
         }
     }
 }
