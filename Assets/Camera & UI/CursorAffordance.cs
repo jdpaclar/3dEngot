@@ -1,31 +1,25 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(CameraRaycaster))]
 public class CursorAffordance : MonoBehaviour {
 
     [SerializeField] Texture2D walkCursor = null;
     [SerializeField] Texture2D attackCursor = null;
     [SerializeField] Texture2D unknownCursor = null;
-    // 96 is the size of the cursor assets PSD
-    [SerializeField] Vector2 cursorHotspot = new Vector2(96, 96);
+    [SerializeField] Vector2 cursorHotspot = new Vector2(0, 0);
 
     CameraRaycaster cameraRaycaster;
 	// Use this for initialization
 	void Start () {
         cameraRaycaster = GetComponent<CameraRaycaster>();
+        cameraRaycaster.LayerChangeObservers += OnLayerChange;
 	}
 	
-	// Update is called once per frame
-	void LateUpdate () {
-        #region Notes, delete soon
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    print(cameraRaycaster.hit.collider.gameObject.tag.ToString());
-        //}
-        //print(cameraRaycaster.layerHit); 
-        #endregion
+    void OnLayerChange(Layer currentLayer)
+    {
         Texture2D renderCursor;
 
-        switch(cameraRaycaster.layerHit)
+        switch (currentLayer)
         {
             case Layer.Walkable:
                 renderCursor = walkCursor;
@@ -42,5 +36,17 @@ public class CursorAffordance : MonoBehaviour {
 
         }
         Cursor.SetCursor(renderCursor, cursorHotspot, CursorMode.Auto);
+    }
+
+	// Update is called once per frame
+	void LateUpdate () {
+        #region Notes, delete soon
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    print(cameraRaycaster.hit.collider.gameObject.tag.ToString());
+        //}
+        //print(cameraRaycaster.layerHit); 
+        #endregion
+        
     }
 }
