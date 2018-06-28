@@ -6,10 +6,12 @@ using UnityStandardAssets.Characters.ThirdPerson;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float walkMoveStopRadius = 0.2f;
+    [SerializeField] float attackMoveStopRadius = 5f;
 
     ThirdPersonCharacter thirdPersonCharacter;   // A reference to the ThirdPersonCharacter on the object
     CameraRaycaster cameraRaycaster;
-    Vector3 currentClickTarget;
+    Vector3 currentDestination;
+    Vector3 clickPoint;
 
     bool isInDirectMode = false;  // TODO consider making serailize field later
 
@@ -17,20 +19,21 @@ public class PlayerMovement : MonoBehaviour
     {
         cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
         thirdPersonCharacter = GetComponent<ThirdPersonCharacter>();
-        currentClickTarget = transform.position;
+        currentDestination = transform.position;
     }
 
     private void ProcessMouseMovement()
     {
         if (Input.GetMouseButton(0))
         {
+            clickPoint = cameraRaycaster.hit.point;  // So not set in default case
             switch (cameraRaycaster.currentLayerHit)
             {
                 case Layer.Walkable:
-                    currentClickTarget = cameraRaycaster.hit.point;  // So not set in default case
+                    currentDestination = ShortDestination(clickPoint, walkMoveStopRadius);
                     break;
                 case Layer.Enemy:
-                    print("Not moving to enemy");
+                    currentDestination = ShortDestination(clickPoint, attackMoveStopRadius);
                     break;
                 default:
                     print("Unexpected!");
@@ -38,11 +41,16 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        var playerToClickPoint = currentClickTarget - transform.position;
+        WalkToDestination();
+    }
 
-        if (playerToClickPoint.magnitude >= walkMoveStopRadius)
+    private void WalkToDestination()
+    {
+        var playerToClickPoint = currentDestination - transform.position;
+
+        if (playerToClickPoint.magnitude >= 0)
         {
-            thirdPersonCharacter.Move(currentClickTarget - transform.position, false, false);
+            thirdPersonCharacter.Move(currentDestination - transform.position, false, false);
         }
         else
         {
@@ -67,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G)) // TODO can be placed into game menu and map to specific controller
         {
             isInDirectMode = !isInDirectMode;
-            currentClickTarget = transform.position; // revert click target to current player position
+            currentDestination = transform.position; // revert click target to current player position
         }
 
         if (isInDirectMode)
@@ -79,5 +87,27 @@ public class PlayerMovement : MonoBehaviour
             ProcessMouseMovement();
         }
     }
+
+    // 
+    private Vector3 ShortDestination(Vector3 destination, float shortening)
+    {
+        Vector3 reductionVector = (destination - transform.position).normalized * shortening;
+        return destination - reductionVector;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.black;
+        // Transform is player
+        // Current Click Target is the destination
+        Gizmos.DrawLine(transform.position, clickPoint);
+        Gizmos.DrawSphere(currentDestination, 0.1f);
+        Gizmos.DrawSphere(clickPoint, 0.13f);
+
+        // attack sphere gizmos
+        Gizmos.color = new Color(255f, 0f, 0, .5f);
+        Gizmos.DrawWireSphere(transform.position, attackMoveStopRadius);
+    }
 }
+
 
