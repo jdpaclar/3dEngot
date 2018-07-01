@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Pacs Town/Pacs Town.unity
+- path: Assets/Scenes/Combat Sandbox/Combat Sandbox.unity
   isLoaded: 1
   isActive: 1
