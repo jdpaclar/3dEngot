@@ -88,7 +88,6 @@
     <Compile Include="Assets\Camera &amp; UI\CameraFollow.cs" />
     <Compile Include="Assets\Camera &amp; UI\CameraRaycaster.cs" />
     <Compile Include="Assets\Camera &amp; UI\CursorAffordance.cs" />
-    <Compile Include="Assets\Camera &amp; UI\NewBehaviourScript.cs" />
     <Compile Include="Assets\Camera &amp; UI\PlayerHealthBar.cs" />
     <Compile Include="Assets\Enemies\Enemy.cs" />
     <Compile Include="Assets\Enemies\EnemyHealthBar.cs" />
@@ -96,7 +95,6 @@
     <Compile Include="Assets\Player\Player.cs" />
     <Compile Include="Assets\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Utilities\SpinMe.cs" />
-    <Compile Include="Assets\Utilities\Utility.cs" />
     <Compile Include="Assets\World Objects\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\Antialiasing.cs" />
     <Compile Include="Assets\World Objects\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\Bloom.cs" />
     <Compile Include="Assets\World Objects\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\BloomAndFlares.cs" />
