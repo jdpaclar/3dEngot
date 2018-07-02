@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="Assets\Camera &amp; UI\CameraFollow.cs" />
     <Compile Include="Assets\Camera &amp; UI\CameraRaycaster.cs" />
+    <Compile Include="Assets\Camera &amp; UI\CameraZoom.cs" />
     <Compile Include="Assets\Camera &amp; UI\CursorAffordance.cs" />
     <Compile Include="Assets\Camera &amp; UI\PlayerHealthBar.cs" />
     <Compile Include="Assets\Enemies\Enemy.cs" />
