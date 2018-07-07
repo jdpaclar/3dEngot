@@ -5,7 +5,12 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float projectileSpeed;
-    public float damageCaused;
+    float damageCaused;
+
+    public void SetDamage(float damage)
+    {
+        damageCaused = damage;
+    }
 
     private void OnTriggerEnter(Collider collider)
     {

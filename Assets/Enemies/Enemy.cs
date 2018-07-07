@@ -6,6 +6,8 @@ using UnityStandardAssets.Characters.ThirdPerson;
 public class Enemy : MonoBehaviour, IDamageable
 {
     [SerializeField] float damagePerShot = 9f;
+    [SerializeField] float secondsBetweenShots = 0.5f;
+
     [SerializeField] float maxHealthPoints = 100f;
     [SerializeField] float attackRadius = 4f;
     [SerializeField] float chaseRadius = 6f;
@@ -16,6 +18,8 @@ public class Enemy : MonoBehaviour, IDamageable
     float currentHealthPoints = 100f;
     AICharacterControl aICharacterControl = null;
     GameObject player = null;
+
+    bool isAttacking = false;
 
     public float HealthAsPercentage
     {
@@ -35,7 +39,7 @@ public class Enemy : MonoBehaviour, IDamageable
         GameObject newProjectile = Instantiate(projectileToUse, projectileSocket.transform.position, Quaternion.identity);
         Projectile projectileComponent = newProjectile.GetComponent<Projectile>();
 
-        projectileComponent.damageCaused = damagePerShot;
+        projectileComponent.SetDamage(damagePerShot);
 
         Vector3 unitVectorToPlayer = (player.transform.position - projectileSocket.transform.position).normalized;
 
@@ -53,9 +57,16 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
 
-        if (distanceToPlayer <= attackRadius)
+        if (distanceToPlayer <= attackRadius && !isAttacking)
         {
-            SpawnProjectile();
+            isAttacking = true;
+            InvokeRepeating("SpawnProjectile", 0, secondsBetweenShots);
+        }
+
+        if (distanceToPlayer > attackRadius)
+        {
+            isAttacking = false;
+            CancelInvoke("SpawnProjectile");
         }
 
         if (distanceToPlayer <= chaseRadius)
