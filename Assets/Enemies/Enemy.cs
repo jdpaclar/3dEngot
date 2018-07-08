@@ -17,11 +17,18 @@ public class Enemy : MonoBehaviour, IDamageable
 
     [SerializeField] Vector3 aimOffset = new Vector3(0, 1, 0);
 
-    float currentHealthPoints = 100f;
+    float currentHealthPoints;
     AICharacterControl aICharacterControl = null;
     GameObject player = null;
 
     bool isAttacking = false;
+
+    void Start()
+    {
+        currentHealthPoints = maxHealthPoints;
+        player = GameObject.FindGameObjectWithTag("Player");
+        aICharacterControl = GetComponent<AICharacterControl>();
+    }
 
     public float HealthAsPercentage
     {
@@ -34,6 +41,11 @@ public class Enemy : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
+        // Kill enemy
+        if (currentHealthPoints <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void SpawnProjectile()
@@ -49,11 +61,7 @@ public class Enemy : MonoBehaviour, IDamageable
         newProjectile.GetComponent<Rigidbody>().velocity = unitVectorToPlayer * projectileSpeed;
     }
 
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-        aICharacterControl = GetComponent<AICharacterControl>();
-    }
+   
 
     void Update()
     {
