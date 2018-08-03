@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 {
     ThirdPersonCharacter thirdPersonCharacter = null;   // A reference to the ThirdPersonCharacter on the object
     CameraRaycaster cameraRaycaster = null;
-    Vector3 currentDestination, clickPoint;
+    Vector3 clickPoint;
 
     [SerializeField] const int walkableLayerNumber = 8;
     [SerializeField] const int enemyLayerNumber = 9;
@@ -25,7 +25,6 @@ public class PlayerMovement : MonoBehaviour
     {
         cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
         thirdPersonCharacter = GetComponent<ThirdPersonCharacter>();
-        currentDestination = transform.position;
         aiCharacterControl = GetComponent<AICharacterControl>();
         walkTarget = new GameObject("walkTarget");
 
@@ -80,7 +79,6 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G)) // TODO can be placed into game menu and map to specific controller
         {
             isInDirectMode = !isInDirectMode;
-            currentDestination = transform.position; // revert click target to current player position
         }
 
         if (isInDirectMode)
