@@ -19,7 +19,14 @@ namespace RPG.Weapons
 
         public AnimationClip GetWeaponAttackAnimClip()
         {
+            RemoveAnimationEvents();
             return attackAnimation;
+        }
+
+        // so that asset pack cannot cause bugs
+        private void RemoveAnimationEvents()
+        {
+            attackAnimation.events = new AnimationEvent[0];
         }
     }
 
