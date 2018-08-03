@@ -9,6 +9,8 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] int enemyLayer = 9;
     [SerializeField] float maxHealthPoints = 100f;
     [SerializeField] float maxAttackRange = 2f;
+    [SerializeField] Weapon weaponInUse;
+    [SerializeField] GameObject weaponSocket;
 
     GameObject currentTarget;
     CameraRaycaster cameraRaycaster;
@@ -18,7 +20,21 @@ public class Player : MonoBehaviour, IDamageable
     
     void Start()
     {
+        RegisterForMouseClick();
         currentHealthPoints = maxHealthPoints;
+        PutWeaponInHand();
+    }
+
+    private void PutWeaponInHand()
+    {
+        var weaponPrefab = weaponInUse.GetWeaponPrefab();
+        var weapon = Instantiate(weaponPrefab, weaponSocket.transform);
+        weapon.transform.localPosition = weaponInUse.gripTransform.localPosition;
+        weapon.transform.localRotation = weaponInUse.gripTransform.localRotation;
+    }
+
+    private void RegisterForMouseClick()
+    {
         cameraRaycaster = FindObjectOfType<CameraRaycaster>();
         cameraRaycaster.notifyMouseClickObservers += OnMouseClick;
     }

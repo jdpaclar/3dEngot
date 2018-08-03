@@ -113,48 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: eaa16975e65f02146828652205ee0547, type: 2}
---- !u!1001 &307185121
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 408730, guid: cce52816d956b8245adcd2cac4504e0f, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 408730, guid: cce52816d956b8245adcd2cac4504e0f, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 408730, guid: cce52816d956b8245adcd2cac4504e0f, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 408730, guid: cce52816d956b8245adcd2cac4504e0f, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 408730, guid: cce52816d956b8245adcd2cac4504e0f, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 408730, guid: cce52816d956b8245adcd2cac4504e0f, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 408730, guid: cce52816d956b8245adcd2cac4504e0f, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 408730, guid: cce52816d956b8245adcd2cac4504e0f, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: cce52816d956b8245adcd2cac4504e0f, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &439760659
 Prefab:
   m_ObjectHideFlags: 0
@@ -533,6 +491,54 @@ Transform:
   m_PrefabParentObject: {fileID: 4077706724358316, guid: 7063a45f024d1e7449793bc72721c350,
     type: 2}
   m_PrefabInternal: {fileID: 1962360477}
+--- !u!1001 &1245849573
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 408730, guid: cce52816d956b8245adcd2cac4504e0f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408730, guid: cce52816d956b8245adcd2cac4504e0f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408730, guid: cce52816d956b8245adcd2cac4504e0f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408730, guid: cce52816d956b8245adcd2cac4504e0f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408730, guid: cce52816d956b8245adcd2cac4504e0f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408730, guid: cce52816d956b8245adcd2cac4504e0f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408730, guid: cce52816d956b8245adcd2cac4504e0f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 408730, guid: cce52816d956b8245adcd2cac4504e0f, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591768874021370, guid: cce52816d956b8245adcd2cac4504e0f,
+        type: 2}
+      propertyPath: weaponInUse
+      value: 
+      objectReference: {fileID: 11400000, guid: ee9323beff26447418faf1709151dd14,
+        type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cce52816d956b8245adcd2cac4504e0f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &1400470088 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4077706724358316, guid: 7063a45f024d1e7449793bc72721c350,
