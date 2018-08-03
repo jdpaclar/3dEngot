@@ -3,7 +3,6 @@ using RPG.Weapons;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityStandardAssets.Characters.ThirdPerson;
 
 namespace RPG.Characters.Enemies
 {
