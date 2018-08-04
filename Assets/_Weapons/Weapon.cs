@@ -9,6 +9,8 @@ namespace RPG.Weapons
     {
         public Transform gripTransform;
 
+        [SerializeField] float minTimeBetweenHits = 0.5f;
+        [SerializeField] float maxAttackRange = 2f;
         [SerializeField] GameObject weaponPrefab;
         [SerializeField] AnimationClip attackAnimation;
 
@@ -23,11 +25,22 @@ namespace RPG.Weapons
             return attackAnimation;
         }
 
+        public float GetTimeBetweenHits()
+        {
+            return minTimeBetweenHits;
+        }
+
+        public float GetMaxAttackRange()
+        {
+            return maxAttackRange;
+        }
+
         // so that asset pack cannot cause bugs
         private void RemoveAnimationEvents()
         {
             attackAnimation.events = new AnimationEvent[0];
         }
+
     }
 
 }
