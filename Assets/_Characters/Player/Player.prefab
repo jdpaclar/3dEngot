@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 114982043262641578}
   - component: {fileID: 114565606889522556}
   - component: {fileID: 114591768874021370}
+  - component: {fileID: 114149656953361154}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -96,7 +97,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149790}
-  m_Material: {fileID: 13400000, guid: c2815a7ab32e42c4bb42f59caacb8ec1, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.3
@@ -702,6 +703,21 @@ Transform:
   m_Father: {fileID: 4397705198365068}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114149656953361154
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f5288c68776cb4f921f4ca67a21304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyBar: {fileID: 0}
+  maxEnergyPoints: 100
+  pointsPerHit: 10
+  currentEnergyPoints: 0
 --- !u!114 &114434857757481104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -737,10 +753,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagePerHit: 10
-  minTimeBetweenHits: 0.5
   enemyLayer: 9
   maxHealthPoints: 800
-  maxAttackRange: 2
   weaponInUse: {fileID: 11400000, guid: ee9323beff26447418faf1709151dd14, type: 2}
   animatorOverrideController: {fileID: 22100000, guid: fe2be5d91fcf885459492715b9fb1573,
     type: 2}
